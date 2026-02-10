@@ -11,7 +11,7 @@ export default function CompanionProfile() {
 
     if (!companion) {
         return (
-            <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
+            <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center pt-20">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-4">Profile Not Found</h1>
                     <Link href="/browse" className="text-pink-400 hover:text-pink-300 underline">← Back to Browse</Link>
@@ -109,29 +109,6 @@ export default function CompanionProfile() {
                             ))}
                         </div>
                     </div>
-
-                    {/* Reviews */}
-                    {companion.reviews && companion.reviews.length > 0 && (
-                        <div className="mt-12">
-                            <h2 className="text-2xl font-serif font-bold mb-6 text-pink-500">Recent Reviews</h2>
-                            <div className="space-y-6">
-                                {companion.reviews.map((review) => (
-                                    <div key={review.id} className="glass rounded-xl p-6">
-                                        <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                                            <div>
-                                                <span className="font-bold">{review.author}</span>
-                                                <span className="text-gray-500 text-sm ml-2">{new Date(review.date).toLocaleDateString()}</span>
-                                            </div>
-                                            <div className="text-yellow-400 mt-2 md:mt-0">
-                                                {'★'.repeat(review.rating)}
-                                            </div>
-                                        </div>
-                                        <p className="text-gray-300 italic text-sm md:text-base">"{review.comment}"</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
                 </div>
 
                 {/* Right Column: Booking Widget */}

@@ -157,29 +157,60 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Kolkata's Social Hotspots */}
-            <section className="py-24 bg-slate-900">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Elite <span className="text-pink-500">Kolkata</span> Destinations</h2>
-                        <p className="text-gray-400">Where our companions can accompany you for the perfect experience.</p>
-                    </div>
+            {/* Client Oriented - Relaxation & Pleasure */}
+            <section className="py-24 bg-slate-900 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-purple-600/10 to-transparent pointer-events-none"></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="flex flex-col lg:flex-row items-center gap-16">
+                        <div className="lg:w-1/2 order-2 lg:order-1 animate-fade-in-up">
+                            <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+                                Client-Oriented <br />
+                                <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500 font-sans tracking-tight">Relaxation & Pleasure</span>
+                            </h2>
+                            <p className="text-xl text-gray-300 mb-10 font-light leading-relaxed max-w-xl">
+                                Our service is strictly engineered around your well-being. Whether you seek a quiet escape from organizational stress or a day dedicated to pure aesthetic pleasure, we provide the ultimate companionship for your relaxation.
+                            </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {[
-                            { name: 'Park Street', desc: 'Fine dining, upscale lounges, and the legendary nightlife of Kolkata.', img: 'https://images.unsplash.com/photo-1571679654681-ba01b9e1e117?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-                            { name: 'Salt Lake', desc: 'Stylish cafes, peaceful walks at Central Park, and modern shopping hubs.', img: 'https://images.unsplash.com/photo-1623153545025-a4ce8309a6ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-                            { name: 'Victoria Memorial', desc: 'The heritage charm of the city, perfect for a sophisticated afternoon walk.', img: 'https://images.unsplash.com/photo-1619864024354-944299b90c1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-                            { name: 'New Town', desc: 'Gala events, business conventions, and high-tech corporate gatherings.', img: 'https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' }
-                        ].map((place, idx) => (
-                            <div key={idx} className="group relative rounded-xl overflow-hidden h-64 border border-gray-800">
-                                <img src={place.img} alt={place.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-110" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-6 flex flex-col justify-end">
-                                    <h3 className="text-xl font-bold mb-1">{place.name}</h3>
-                                    <p className="text-gray-300 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">{place.desc}</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                                <div className="p-6 glass rounded-2xl border border-white/10 hover:border-pink-500/30 transition-colors">
+                                    <div className="text-3xl mb-3">🧘‍♂️</div>
+                                    <h3 className="text-lg font-bold mb-2 text-white">Curated Peace</h3>
+                                    <p className="text-sm text-gray-400 italic">Experience silence and presence with a companion who understands the value of peace.</p>
+                                </div>
+                                <div className="p-6 glass rounded-2xl border border-white/10 hover:border-purple-500/30 transition-colors">
+                                    <div className="text-3xl mb-3">🎨</div>
+                                    <h3 className="text-lg font-bold mb-2 text-white">Leisure Oriented</h3>
+                                    <p className="text-sm text-gray-400 italic">From art galleries to premium lounges, enjoy time focused entirely on your satisfaction.</p>
                                 </div>
                             </div>
-                        ))}
+
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link href="/browse" className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-bold text-center hover:shadow-[0_0_30px_-5px_rgba(219,39,119,0.5)] transition-all transform hover:scale-105">
+                                    Experience Pure Luxury
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="lg:w-1/2 order-1 lg:order-2 relative">
+                            <div className="absolute -inset-6 bg-gradient-to-tr from-purple-600/20 to-pink-600/20 rounded-3xl blur-3xl opacity-50"></div>
+                            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+                                <img
+                                    src="https://images.unsplash.com/photo-1544161515-4ae6ce6ca676?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                                    alt="Relaxation and Pleasure"
+                                    className="w-full h-[600px] object-cover transition-transform duration-1000 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                                <div className="absolute bottom-10 left-10 right-10 p-8 glass backdrop-blur-lg rounded-2xl border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div className="flex items-center gap-4 mb-3">
+                                        <div className="w-10 h-1 border-t-2 border-pink-500"></div>
+                                        <span className="uppercase tracking-[0.2em] text-[10px] font-bold text-pink-500">The Ultimate Standard</span>
+                                    </div>
+                                    <p className="text-white text-lg font-light italic leading-relaxed">
+                                        "True luxury is being able to disconnect and simply be yourself in the company of someone who truly appreciate the moment."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
