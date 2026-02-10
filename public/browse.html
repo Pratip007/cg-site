@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Companions | VelvetDate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#6D28D9', // Deep Purple
+                        secondary: '#DB2777', // Modern Pink
+                        dark: '#0F172A',
+                        gold: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #c084fc, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom scrollbar for filters if needed */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6D28D9;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white font-sans antialiased">
+    <!-- Navbar (Consistent) -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-wider">
+                        VELVET<span class="text-secondary">DATE</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Home</a>
+                        <a href="browse.html"
+                            class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition">Browse
+                            Profiles</a>
+                        <a href="index.html#how-it-works"
+                            class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">How
+                            it Works</a>
+                        <a href="#"
+                            class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2 rounded-full text-sm font-medium transition shadow-lg shadow-purple-500/30">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row gap-8">
+
+            <!-- Filters Sidebar -->
+            <aside class="w-full md:w-1/4">
+                <div class="glass rounded-xl p-6 sticky top-24">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-serif font-bold">Filters</h2>
+                        <button class="text-sm text-pink-400 hover:text-pink-300">Reset</button>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Search</label>
+                        <div class="relative">
+                            <input type="text" placeholder="Name or keyword..."
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-purple-500">
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-2.5" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Location</label>
+                        <select
+                            class="w-full bg-slate-800 border border-slate-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-purple-500">
+                            <option>Any Location</option>
+                            <option>New York, NY</option>
+                            <option>Los Angeles, CA</option>
+                            <option>Chicago, IL</option>
+                            <option>Miami, FL</option>
+                            <option>London, UK</option>
+                        </select>
+                    </div>
+
+                    <!-- Age Range -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Age Range</label>
+                        <div class="flex items-center space-x-4">
+                            <input type="number" placeholder="18"
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg py-2 px-2 text-center text-white focus:outline-none focus:border-purple-500">
+                            <span class="text-gray-500">-</span>
+                            <input type="number" placeholder="40"
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg py-2 px-2 text-center text-white focus:outline-none focus:border-purple-500">
+                        </div>
+                    </div>
+
+                    <!-- Interests -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Interests</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button
+                                class="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 border border-slate-700 hover:border-purple-500 hover:text-purple-400 transition">Dining</button>
+                            <button
+                                class="px-3 py-1 rounded-full text-xs font-medium bg-purple-900/30 border border-purple-500/50 text-purple-400 transition">Movies</button>
+                            <button
+                                class="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 border border-slate-700 hover:border-purple-500 hover:text-purple-400 transition">Art</button>
+                            <button
+                                class="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 border border-slate-700 hover:border-purple-500 hover:text-purple-400 transition">Travel</button>
+                            <button
+                                class="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 border border-slate-700 hover:border-purple-500 hover:text-purple-400 transition">Gaming</button>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-bold shadow-lg hover:shadow-purple-500/30 transition">Apply
+                        Filters</button>
+                </div>
+            </aside>
+
+            <!-- Grid -->
+            <main class="w-full md:w-3/4">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-3xl font-serif font-bold">Our <span class="text-gradient">Companions</span></h1>
+                    <div class="flex items-center space-x-2 text-sm text-gray-400">
+                        <span>Sort by:</span>
+                        <select class="bg-transparent border-none focus:ring-0 text-white font-medium cursor-pointer">
+                            <option class="bg-slate-800">Recommended</option>
+                            <option class="bg-slate-800">Newest</option>
+                            <option class="bg-slate-800">Price: Low to High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="glass rounded-xl overflow-hidden hover:bg-white/5 transition group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Sophia"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span> Available
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold font-serif">Sophia, 24</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="ml-1 text-white">4.9</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Book lover, coffee enthusiast, and great
+                                conversationalist. Fluent in English and French.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Conversation</span>
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Dinner</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                                <span class="text-pink-400 font-bold">$50<span
+                                        class="text-gray-500 text-xs font-normal">/hr</span></span>
+                                <a href="profile.html?id=sophia"
+                                    class="text-sm font-bold hover:text-secondary transition">View Profile →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass rounded-xl overflow-hidden hover:bg-white/5 transition group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Elena"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span> Available
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold font-serif">Elena, 26</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="ml-1 text-white">5.0</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Sophisticated and elegant. Perfect for
+                                formal events or art gallery openings.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Events</span>
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Art</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                                <span class="text-pink-400 font-bold">$75<span
+                                        class="text-gray-500 text-xs font-normal">/hr</span></span>
+                                <a href="profile.html?id=elena"
+                                    class="text-sm font-bold hover:text-secondary transition">View Profile →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass rounded-xl overflow-hidden hover:bg-white/5 transition group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Mia"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span> Available
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold font-serif">Mia, 22</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="ml-1 text-white">4.8</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Spontaneous and fun. Let's go to an
+                                arcade or explore the city!</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Casual</span>
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Fun</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                                <span class="text-pink-400 font-bold">$45<span
+                                        class="text-gray-500 text-xs font-normal">/hr</span></span>
+                                <a href="profile.html?id=mia"
+                                    class="text-sm font-bold hover:text-secondary transition">View Profile →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 (New) -->
+                    <div class="glass rounded-xl overflow-hidden hover:bg-white/5 transition group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Ava"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white flex items-center">
+                                <span class="w-2 h-2 bg-yellow-500 rounded-full mr-1.5"></span> Busy
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold font-serif">Ava, 25</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="ml-1 text-white">4.9</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Fashion model and student. I love
+                                photography and rooftop bars.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Fashion</span>
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Social</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                                <span class="text-pink-400 font-bold">$60<span
+                                        class="text-gray-500 text-xs font-normal">/hr</span></span>
+                                <a href="profile.html?id=ava"
+                                    class="text-sm font-bold hover:text-secondary transition">View Profile →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 (New) -->
+                    <div class="glass rounded-xl overflow-hidden hover:bg-white/5 transition group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Isabella"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span> Available
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold font-serif">Isabella, 28</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="ml-1 text-white">5.0</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Tech entrepreneur who loves deep talks
+                                about the future and technology.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Smart</span>
+                                <span class="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded">Tech</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                                <span class="text-pink-400 font-bold">$100<span
+                                        class="text-gray-500 text-xs font-normal">/hr</span></span>
+                                <a href="profile.html?id=isabella"
+                                    class="text-sm font-bold hover:text-secondary transition">View Profile →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center mt-12 space-x-2">
+                    <button class="px-4 py-2 glass rounded-lg hover:bg-white/10 transition">Previous</button>
+                    <button
+                        class="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-bold">1</button>
+                    <button class="px-4 py-2 glass rounded-lg hover:bg-white/10 transition">2</button>
+                    <button class="px-4 py-2 glass rounded-lg hover:bg-white/10 transition">3</button>
+                    <span class="px-4 py-2 text-gray-500">...</span>
+                    <button class="px-4 py-2 glass rounded-lg hover:bg-white/10 transition">Next</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer (Simplified) -->
+    <footer class="bg-black py-8 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">© 2026 VelvetDate Inc.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

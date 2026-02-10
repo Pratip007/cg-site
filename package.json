@@ -1,0 +1,18 @@
+{
+  "name": "cg-site",
+  "version": "1.0.0",
+  "description": "This is a stunning, premium multi-page website template for a \"Rent a Companion\" service, built with modern HTML5 and Tailwind CSS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.0.2"
+  }
+}

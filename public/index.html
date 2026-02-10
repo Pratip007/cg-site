@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Companion | Exclusive Dating Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#6D28D9', // Deep Purple
+                        secondary: '#DB2777', // Modern Pink
+                        dark: '#0F172A',
+                        gold: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #c084fc, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white font-sans antialiased">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-wider">
+                        VELVET<span class="text-secondary">DATE</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition">Home</a>
+                        <a href="browse.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Browse Profiles</a>
+                        <a href="#how-it-works" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">How it Works</a>
+                        <a href="#testimonials" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Stories</a>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2 rounded-full text-sm font-medium transition shadow-lg shadow-purple-500/30">Sign Up</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center hero-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900"></div>
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto animate-fade-in-up">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
+                Find Your Perfect <br>
+                <span class="text-gradient">Companion</span> For Any Moment
+            </h1>
+            <p class="mt-4 text-xl text-gray-300 mb-10 font-light max-w-2xl mx-auto">
+                Experience meaningful connections without the complications. Rent a girlfriend for social events, family gatherings, or specialized dates.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="browse.html" class="px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-xl">
+                    Browse Profiles
+                </a>
+                <a href="#how-it-works" class="px-8 py-4 glass text-white rounded-full font-bold hover:bg-white/10 transition transform hover:scale-105 backdrop-blur-md border border-white/20">
+                    How It Works
+                </a>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="mt-16 flex justify-center space-x-8 text-gray-400 text-sm font-medium tracking-widest uppercase">
+                <span>Verified Profiles</span>
+                <span>•</span>
+                <span>Strictly Platonic</span>
+                <span>•</span>
+                <span>100% Confidential</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Profiles Preview -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-purple-600/20 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-pink-600/20 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">Featured <span class="text-secondary">Companions</span></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Profile Card 1 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sophia" class="w-full h-[500px] object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div class="flex justify-between items-end mb-2">
+                            <div>
+                                <h3 class="text-2xl font-bold font-serif">Sophia, 24</h3>
+                                <p class="text-pink-400 text-sm font-medium">New York, NY</p>
+                            </div>
+                            <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold border border-white/30">$50/hr</span>
+                        </div>
+                        <p class="text-gray-300 text-sm line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            Looking for a plus one for your next company dinner? I'm articulate, well-traveled, and great at conversation.
+                        </p>
+                        <a href="profile.html?id=sophia" class="block w-full text-center py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/40 transition">View Profile</a>
+                    </div>
+                </div>
+
+                <!-- Profile Card 2 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Elena" class="w-full h-[500px] object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div class="flex justify-between items-end mb-2">
+                            <div>
+                                <h3 class="text-2xl font-bold font-serif">Elena, 26</h3>
+                                <p class="text-pink-400 text-sm font-medium">Los Angeles, CA</p>
+                            </div>
+                            <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold border border-white/30">$75/hr</span>
+                        </div>
+                        <p class="text-gray-300 text-sm line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            Lover of art galleries, wine tasting, and deep conversations. Let's make your evening unforgettable.
+                        </p>
+                        <a href="profile.html?id=elena" class="block w-full text-center py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/40 transition">View Profile</a>
+                    </div>
+                </div>
+
+                <!-- Profile Card 3 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mia" class="w-full h-[500px] object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div class="flex justify-between items-end mb-2">
+                            <div>
+                                <h3 class="text-2xl font-bold font-serif">Mia, 22</h3>
+                                <p class="text-pink-400 text-sm font-medium">Chicago, IL</p>
+                            </div>
+                            <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold border border-white/30">$45/hr</span>
+                        </div>
+                        <p class="text-gray-300 text-sm line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            Fun, energetic, and spontaneous! I love karaoke, theme parks, and trying new restaurants.
+                        </p>
+                        <a href="profile.html?id=mia" class="block w-full text-center py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/40 transition">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="browse.html" class="inline-block px-10 py-4 glass text-white border border-white/20 rounded-full font-bold hover:bg-white/10 transition">
+                    View All 500+ Profiles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 bg-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">Simple & <span class="text-secondary">Secure</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our process is designed to ensure safety and satisfaction for both parties.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center p-8 glass rounded-2xl hover:bg-white/5 transition duration-300">
+                    <div class="w-20 h-20 bg-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">1. Browse & Filter</h3>
+                    <p class="text-gray-400">Search through our verified profiles based on location, interests, and personality type.</p>
+                </div>
+                <div class="text-center p-8 glass rounded-2xl hover:bg-white/5 transition duration-300">
+                    <div class="w-20 h-20 bg-pink-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">2. Book a Date</h3>
+                    <p class="text-gray-400">Send a request with your date details. Our platform handles the scheduling and payments securely.</p>
+                </div>
+                <div class="text-center p-8 glass rounded-2xl hover:bg-white/5 transition duration-300">
+                    <div class="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">3. Enjoy Your Time</h3>
+                    <p class="text-gray-400">Meet your companion and enjoy a wonderful, stress-free time together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-wider">
+                        VELVET<span class="text-secondary">DATE</span>
+                    </a>
+                    <p class="text-gray-500 text-sm mt-2">© 2026 VelvetDate Inc. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <!-- Social icons placeholder -->
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.072 3.266.153 4.083 1.363 4.135 4.135.06 1.266.072 1.646.072 4.85 0 3.204-.012 3.584-.072 4.85-.153 3.266-1.363 4.083-4.135 4.135-1.266.06-1.646.072-4.85.072-3.204 0-3.584-.012-4.85-.072-3.266-.153-4.083-1.363-4.135-4.135-.06-1.266-.072-1.646-.072-4.85 0-3.204.012-3.584.072-4.85.153-3.266 1.363-4.083 4.135-4.135 1.266-.06 1.646-.072 4.85-.072zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
