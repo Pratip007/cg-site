@@ -4,11 +4,12 @@ import Companion from '@/models/Companion';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
-        const companion = await Companion.findById(params.id);
+        const { id } = await params;
+        const companion = await Companion.findById(id);
 
         if (!companion) {
             return NextResponse.json({ error: 'Companion not found' }, { status: 404 });
@@ -22,12 +23,13 @@ export async function GET(
 
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
+        const { id } = await params;
         const body = await request.json();
-        const companion = await Companion.findByIdAndUpdate(params.id, body, {
+        const companion = await Companion.findByIdAndUpdate(id, body, {
             new: true,
             runValidators: true,
         });
@@ -44,11 +46,12 @@ export async function PUT(
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
-        const companion = await Companion.findByIdAndDelete(params.id);
+        const { id } = await params;
+        const companion = await Companion.findByIdAndDelete(id);
 
         if (!companion) {
             return NextResponse.json({ error: 'Companion not found' }, { status: 404 });

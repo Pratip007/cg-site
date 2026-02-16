@@ -309,7 +309,7 @@ export default function Home() {
             </section>
 
             {/* SEO Content Block - Hidden visually but present for crawlers or kept low profile */}
-            <section className="py-12 bg-black text-gray-800 text-xs leading-relaxed">
+            <section className="hidden py-12 bg-black text-gray-800 text-xs leading-relaxed">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-gray-700 font-bold mb-4 uppercase tracking-widest">Best Sex Service & Call Girls in Kolkata</h2>
                     <p className="mb-4">
