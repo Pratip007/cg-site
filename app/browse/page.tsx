@@ -106,22 +106,26 @@ function CompanionCard({ companion }: { companion: Companion }) {
             </div>
             <div className="p-5">
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold font-serif text-white">{companion.name}, {companion.age}</h3>
-                    <div className="flex items-center text-yellow-400 text-sm font-bold">
+                    <h3 className="text-2xl font-bold font-serif text-white">{companion.name}, {companion.age}</h3>
+                    <div className="flex items-center text-yellow-400 text-base font-bold">
                         ★ 4.9
                     </div>
                 </div>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-2 h-10">{companion.bio}</p>
+                <p className="text-gray-400 text-sm mb-5 line-clamp-2 h-10 leading-relaxed">{companion.bio}</p>
 
-                <div className="flex flex-wrap gap-2 mb-4 h-16 overflow-hidden">
-                    {companion.interests.slice(0, 3).map((interest, i) => (
-                        <span key={i} className="bg-slate-800 text-gray-300 text-xs px-2 py-1 rounded border border-gray-700">{interest}</span>
+                <div className="flex flex-wrap gap-2 items-start mb-6">
+                    {companion.interests.map((interest, i) => (
+                        <span key={i} className="bg-slate-800/80 text-gray-200 text-[11px] px-3 py-2 rounded-lg border border-slate-700 tracking-wider uppercase font-bold shadow-sm">
+                            {interest}
+                        </span>
                     ))}
                 </div>
 
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
-                    <span className="text-pink-400 font-bold">₹{companion.price}<span className="text-gray-500 text-xs font-normal">/hr</span></span>
-                    <Link href={`/companions/${companion.id}`} className="text-sm font-bold text-white hover:text-pink-400 transition">View Profile →</Link>
+                <div className="flex items-center justify-between mt-auto pt-5 border-t border-gray-800">
+                    <span className="text-pink-400 font-bold text-xl">₹{companion.price}<span className="text-gray-500 text-xs font-normal">/hr</span></span>
+                    <Link href={`/companions/${companion.id}`} className="text-sm font-bold text-white hover:text-pink-400 transition flex items-center gap-1">
+                        View Profile <span>→</span>
+                    </Link>
                 </div>
             </div>
         </div>

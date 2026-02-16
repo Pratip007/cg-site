@@ -118,6 +118,7 @@ export default function Home() {
                                     price={companion.price}
                                     image={companion.images[0]}
                                     desc={companion.bio}
+                                    interests={companion.interests}
                                 />
                             ))
                         )}
@@ -340,23 +341,28 @@ export default function Home() {
     );
 }
 
-function FeaturedCard({ id, name, age, location, price, image, desc }: any) {
+function FeaturedCard({ id, name, age, location, price, image, desc, interests = [] }: any) {
     return (
         <div className="group relative rounded-2xl overflow-hidden shadow-2xl transition transform hover:-translate-y-2 cursor-pointer bg-slate-800 border border-slate-700 hover:border-pink-500/50">
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10 transition opacity-90 group-hover:opacity-60"></div>
             <img src={image} alt={name} className="w-full h-[500px] object-cover transition duration-700 group-hover:scale-110" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-2 group-hover:translate-y-0 transition transform duration-300">
-                <div className="flex justify-between items-end mb-2">
-                    <div>
-                        <h3 className="text-2xl font-bold font-serif text-white">{name}, {age}</h3>
-                        <p className="text-pink-400 text-sm font-medium">{location}</p>
+                <div className="flex justify-between items-start mb-3">
+                    <div className="flex-1">
+                        <h3 className="text-3xl font-bold font-serif text-white">{name}, {age}</h3>
+                        <p className="text-pink-400 text-base font-medium mb-2">{location}</p>
+                        <div className="flex flex-wrap gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                            {interests.map((interest: string, i: number) => (
+                                <span key={i} className="text-[10px] text-white/70 uppercase tracking-widest border border-white/20 px-2 py-0.5 rounded bg-white/5 font-semibold">{interest}</span>
+                            ))}
+                        </div>
                     </div>
-                    <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold border border-white/30 text-white">₹{price}/hr</span>
+                    <span className="px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-sm font-bold border border-white/30 text-white shadow-lg">₹{price}/hr</span>
                 </div>
-                <p className="text-gray-300 text-sm line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                <p className="text-gray-200 text-base line-clamp-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 leading-relaxed font-light">
                     {desc}
                 </p>
-                <Link href={`/companions/${id}`} className="block w-full text-center py-2.5 md:py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/40 transition text-white text-sm md:text-base">
+                <Link href={`/companions/${id}`} className="block w-full text-center py-3 md:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold hover:shadow-2xl hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 text-white text-base md:text-lg">
                     View Profile
                 </Link>
             </div>
