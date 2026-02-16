@@ -13,7 +13,10 @@ export function useCompanions() {
         setLoading(true);
         try {
             const res = await fetch('/api/companions');
-            if (!res.ok) throw new Error('Failed to fetch from API');
+            if (!res.ok) {
+                const errorData = await res.json().catch(() => ({}));
+                throw new Error(errorData.error || `Failed to fetch from API: ${res.status}`);
+            }
             const data = await res.json();
             // Map _id to id if necessary
             const mappedData = data.map((c: any) => ({ ...c, id: c._id || c.id }));

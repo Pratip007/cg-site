@@ -12,6 +12,7 @@ export async function GET() {
         const companions = await Companion.find({}).sort({ createdAt: -1 });
         return NextResponse.json(companions);
     } catch (error: any) {
+        console.error('Error in GET /api/companions:', error);
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
