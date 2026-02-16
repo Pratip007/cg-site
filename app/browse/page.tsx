@@ -14,7 +14,7 @@ export default function Browse() {
     // Filtering Logic
     const filteredCompanions = companions.filter(c =>
         c.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (locationFilter ? c.location === locationFilter : true)
+        (locationFilter ? (c.location?.trim() || '') === locationFilter : true)
     );
 
     if (loading) return <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">Loading...</div>;
@@ -25,37 +25,38 @@ export default function Browse() {
 
                 {/* Filters Sidebar */}
                 <aside className="w-full md:w-1/4">
-                    <div className="glass rounded-xl p-6 sticky top-24">
-                        <h2 className="text-xl font-serif font-bold mb-4 text-pink-500">Find Your Match</h2>
+                    <div className="glass rounded-xl p-4 md:p-6 sticky top-24">
+                        <h2 className="text-lg md:text-xl font-serif font-bold mb-3 md:mb-4 text-pink-500">Find Your Match</h2>
 
                         {/* Search */}
-                        <div className="mb-6">
-                            <label className="block text-sm font-medium text-gray-400 mb-2">Search Name</label>
+                        <div className="mb-4 md:mb-6">
+                            <label className="block text-xs md:text-sm font-medium text-gray-400 mb-1 md:mb-2">Search Name</label>
                             <input
                                 type="text"
                                 placeholder="e.g. Ishani"
-                                className="w-full bg-slate-800 border border-slate-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-purple-500 transition"
+                                className="w-full bg-slate-800 border border-slate-700 rounded-lg py-1.5 md:py-2 px-3 md:px-4 text-sm md:text-base text-white focus:outline-none focus:border-purple-500 transition"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
 
                         {/* Location Filter */}
-                        <div className="mb-6">
-                            <label className="block text-sm font-medium text-gray-400 mb-2">In Your City</label>
+                        <div className="mb-4 md:mb-6">
+                            <label className="block text-xs md:text-sm font-medium text-gray-400 mb-1 md:mb-2">In Your City</label>
                             <select
                                 title="Select City"
-                                className="w-full bg-slate-800 border border-slate-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-purple-500 transition"
+                                className="w-full bg-slate-800 border border-slate-700 rounded-lg py-1.5 md:py-2 px-3 md:px-4 text-sm md:text-base text-white focus:outline-none focus:border-purple-500 transition"
                                 value={locationFilter}
                                 onChange={(e) => setLocationFilter(e.target.value)}
                             >
                                 <option value="">All Areas</option>
-                                <option value="Kolkata">Kolkata (All)</option>
-                                <option value="Park Street">Park Street</option>
-                                <option value="Salt Lake">Salt Lake</option>
-                                <option value="New Town">New Town</option>
-                                <option value="Ballygunge">Ballygunge</option>
-                                <option value="South City">South City</option>
+                                {Array.from(new Set(companions.map(c => c.location?.trim())))
+                                    .filter(Boolean)
+                                    .sort()
+                                    .map(loc => (
+                                        <option key={loc} value={loc}>{loc}</option>
+                                    ))
+                                }
                             </select>
                         </div>
 
