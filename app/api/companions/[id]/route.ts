@@ -4,11 +4,11 @@ import Companion from '@/models/Companion';
 
 export async function GET(
     request: Request,
-    { params }: { params: Promise<{ id: string }> }
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
-        const { id } = await params;
+        const { id } = await context.params;
         const companion = await Companion.findById(id);
 
         if (!companion) {
@@ -23,11 +23,11 @@ export async function GET(
 
 export async function PUT(
     request: Request,
-    { params }: { params: Promise<{ id: string }> }
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
-        const { id } = await params;
+        const { id } = await context.params;
         const body = await request.json();
         const companion = await Companion.findByIdAndUpdate(id, body, {
             new: true,
@@ -46,11 +46,11 @@ export async function PUT(
 
 export async function DELETE(
     request: Request,
-    { params }: { params: Promise<{ id: string }> }
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
-        const { id } = await params;
+        const { id } = await context.params;
         const companion = await Companion.findByIdAndDelete(id);
 
         if (!companion) {
