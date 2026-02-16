@@ -19,14 +19,8 @@ export function useCompanions() {
             const mappedData = data.map((c: any) => ({ ...c, id: c._id || c.id }));
             setCompanions(mappedData);
         } catch (error) {
-            console.warn('API unavailable or failed, falling back to local storage', error);
-            // Fallback to localStorage
-            if (typeof window !== 'undefined') {
-                const stored = localStorage.getItem('velvet_date_companions');
-                if (stored) {
-                    setCompanions(JSON.parse(stored));
-                }
-            }
+            console.error('API unavailable or failed', error);
+            // No fallback to local storage
         } finally {
             setLoading(false);
         }
@@ -36,17 +30,9 @@ export function useCompanions() {
         fetchCompanions();
     }, [fetchCompanions]);
 
-    // Helper to sync with localStorage
-    const syncToLocalStorage = (newCompanions: Companion[]) => {
-        setCompanions(newCompanions);
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('velvet_date_companions', JSON.stringify(newCompanions));
-        }
-    };
-
     const addCompanion = async (companionData: Omit<Companion, 'id'>) => {
-        const newId = Date.now().toString();
-        const newCompanion = { ...companionData, id: newId, isAvailable: true };
+        // We don't generate ID here anymore, let the DB handle it
+        const newCompanion = { ...companionData, isAvailable: true };
 
         try {
             const res = await fetch('/api/companions', {
@@ -58,10 +44,11 @@ export function useCompanions() {
                 await fetchCompanions(); // Refresh from server
                 return;
             }
-            throw new Error('API failed');
+            const errorData = await res.json();
+            throw new Error(errorData.error || 'API failed');
         } catch (e) {
-            console.warn("API add failed, using local storage fallback");
-            syncToLocalStorage([...companions, newCompanion]);
+            console.error("API add failed:", e);
+            alert("Failed to add companion: " + e);
         }
     };
 
@@ -78,9 +65,8 @@ export function useCompanions() {
             }
             throw new Error('API failed');
         } catch (e) {
-            console.warn("API update failed, using local storage fallback");
-            const updatedList = companions.map(c => c.id === id ? { ...c, ...updates } : c);
-            syncToLocalStorage(updatedList);
+            console.error("API update failed:", e);
+            alert("Failed to update companion");
         }
     };
 
@@ -95,9 +81,8 @@ export function useCompanions() {
             }
             throw new Error('API failed');
         } catch (e) {
-            console.warn("API delete failed, using local storage fallback");
-            const updatedList = companions.filter(c => c.id !== id);
-            syncToLocalStorage(updatedList);
+            console.error("API delete failed:", e);
+            alert("Failed to delete companion");
         }
     };
 
