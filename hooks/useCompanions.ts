@@ -35,7 +35,7 @@ export function useCompanions() {
 
     const addCompanion = async (companionData: Omit<Companion, 'id'>) => {
         // We don't generate ID here anymore, let the DB handle it
-        const newCompanion = { ...companionData, isAvailable: true };
+        const newCompanion = { ...companionData };
 
         try {
             const res = await fetch('/api/companions', {

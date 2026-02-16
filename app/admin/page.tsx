@@ -19,7 +19,7 @@ export default function AdminPanel() {
         isAvailable: true
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const companionData = {
@@ -34,10 +34,10 @@ export default function AdminPanel() {
         };
 
         if (editingId) {
-            updateCompanion(editingId, companionData);
+            await updateCompanion(editingId, companionData);
             setEditingId(null);
         } else {
-            addCompanion(companionData);
+            await addCompanion(companionData);
         }
 
         resetForm();
