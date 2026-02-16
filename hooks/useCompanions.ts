@@ -1,43 +1,104 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Companion } from '../types';
+
+const MOCK_COMPANIONS: Companion[] = [
+    {
+        id: '1',
+        name: 'Aisha',
+        age: 24,
+        location: 'Mumbai',
+        price: 3500,
+        bio: 'Fashion designer who loves food and travel. I enjoy meaningful conversations and exploring new places.',
+        interests: ['Fashion', 'Food', 'Travel'],
+        images: ['https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'],
+        isAvailable: true,
+    },
+    {
+        id: '2',
+        name: 'Priya',
+        age: 26,
+        location: 'Bangalore',
+        price: 5000,
+        bio: 'Software engineer by day, artist by night. I love visiting art galleries and discussing modern literature.',
+        interests: ['Art', 'Literature', 'Tech'],
+        images: ['https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'],
+        isAvailable: true,
+    },
+    {
+        id: '3',
+        name: 'Riya',
+        age: 23,
+        location: 'Delhi',
+        price: 4000,
+        bio: 'Aspiring model and dancer. Energetic and fun-loving, perfect for parties and social events.',
+        interests: ['Dancing', 'Modeling', 'Parties'],
+        images: ['https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'],
+        isAvailable: true,
+    },
+];
 
 export function useCompanions() {
     const [companions, setCompanions] = useState<Companion[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchCompanions = async () => {
+    const fetchCompanions = useCallback(async () => {
+        setLoading(true);
         try {
-            setLoading(true);
             const res = await fetch('/api/companions');
-            if (!res.ok) throw new Error('Failed to fetch');
+            if (!res.ok) throw new Error('Failed to fetch from API');
             const data = await res.json();
-            // Map _id to id for frontend compatibility
-            const mappedData = data.map((c: any) => ({ ...c, id: c._id }));
+            // Map _id to id if necessary
+            const mappedData = data.map((c: any) => ({ ...c, id: c._id || c.id }));
             setCompanions(mappedData);
         } catch (error) {
-            console.error('Error fetching companions:', error);
+            console.warn('API unavailable or failed, falling back to local storage', error);
+            // Fallback to localStorage
+            if (typeof window !== 'undefined') {
+                const stored = localStorage.getItem('velvet_date_companions');
+                if (stored) {
+                    setCompanions(JSON.parse(stored));
+                } else {
+                    setCompanions(MOCK_COMPANIONS);
+                    localStorage.setItem('velvet_date_companions', JSON.stringify(MOCK_COMPANIONS));
+                }
+            }
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         fetchCompanions();
-    }, []);
+    }, [fetchCompanions]);
 
-    const addCompanion = async (companion: Omit<Companion, 'id'>) => {
+    // Helper to sync with localStorage
+    const syncToLocalStorage = (newCompanions: Companion[]) => {
+        setCompanions(newCompanions);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('velvet_date_companions', JSON.stringify(newCompanions));
+        }
+    };
+
+    const addCompanion = async (companionData: Omit<Companion, 'id'>) => {
+        const newId = Date.now().toString();
+        const newCompanion = { ...companionData, id: newId, isAvailable: true };
+
         try {
             const res = await fetch('/api/companions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(companion),
+                body: JSON.stringify(newCompanion),
             });
-            if (!res.ok) throw new Error('Failed to add');
-            await fetchCompanions(); // Refresh list
-        } catch (error) {
-            console.error('Error adding companion:', error);
+            if (res.ok) {
+                await fetchCompanions(); // Refresh from server
+                return;
+            }
+            throw new Error('API failed');
+        } catch (e) {
+            console.warn("API add failed, using local storage fallback");
+            syncToLocalStorage([...companions, newCompanion]);
         }
     };
 
@@ -48,10 +109,15 @@ export function useCompanions() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updates),
             });
-            if (!res.ok) throw new Error('Failed to update');
-            await fetchCompanions(); // Refresh list
-        } catch (error) {
-            console.error('Error updating companion:', error);
+            if (res.ok) {
+                await fetchCompanions(); // Refresh from server
+                return;
+            }
+            throw new Error('API failed');
+        } catch (e) {
+            console.warn("API update failed, using local storage fallback");
+            const updatedList = companions.map(c => c.id === id ? { ...c, ...updates } : c);
+            syncToLocalStorage(updatedList);
         }
     };
 
@@ -60,10 +126,15 @@ export function useCompanions() {
             const res = await fetch(`/api/companions/${id}`, {
                 method: 'DELETE',
             });
-            if (!res.ok) throw new Error('Failed to delete');
-            await fetchCompanions(); // Refresh list
-        } catch (error) {
-            console.error('Error deleting companion:', error);
+            if (res.ok) {
+                await fetchCompanions(); // Refresh from server
+                return;
+            }
+            throw new Error('API failed');
+        } catch (e) {
+            console.warn("API delete failed, using local storage fallback");
+            const updatedList = companions.filter(c => c.id !== id);
+            syncToLocalStorage(updatedList);
         }
     };
 

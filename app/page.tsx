@@ -8,19 +8,68 @@ export default function Home() {
 
     return (
         <main className="bg-slate-900 text-white font-sans antialiased min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "AdultEntertainment",
+                        "name": "VelvetDate - Premium Kolkata Escorts",
+                        "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+                        "description": "Kolkata's most elite and professional Sex Satisfaction, Call girl, VIP Escort platform. Curating elegance and sophistication.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Park Street",
+                            "addressLocality": "Kolkata",
+                            "addressRegion": "WB",
+                            "postalCode": "700016",
+                            "addressCountry": "IN"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 22.555,
+                            "longitude": 88.351
+                        },
+                        "url": "https://velvetdate.com",
+                        "telephone": "+91-9876543210",
+                        "openingHoursSpecification": {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": [
+                                "Monday",
+                                "Tuesday",
+                                "Wednesday",
+                                "Thursday",
+                                "Friday",
+                                "Saturday",
+                                "Sunday"
+                            ],
+                            "opens": "00:00",
+                            "closes": "23:59"
+                        },
+                        "priceRange": "₹2000 - ₹10000",
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.9",
+                            "reviewCount": "1250"
+                        }
+                    })
+                }}
+            />
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden py-20">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900 z-10"></div>
+                <div className="absolute inset-0 bg-purple-900/40 mix-blend-overlay z-10"></div>
                 {/* Background Image Placeholder or CSS */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-60"></div>
+                <div className="absolute inset-0 bg-[url('https://www.shutterstock.com/image-photo/beautiful-naked-female-body-on-260nw-2363035389.jpg')] bg-cover bg-center opacity-60"></div>
 
                 <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto animate-fade-in-up">
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight drop-shadow-lg">
-                        Find Your Perfect <br />
-                        <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Companion</span> For Any Moment
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight drop-shadow-lg">
+                        Premium Call Girls, <br />
+                        <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Models</span>, Airport Kolkata <br />
+                        Top Hotels Escorts Service
                     </h1>
-                    <p className="mt-4 text-lg md:text-xl text-gray-300 mb-10 font-light max-w-2xl mx-auto drop-shadow-md">
-                        Experience meaningful connections without the complications. Rent a companion for social events, cultural gatherings, or specialized dates in the heart of Kolkata.
+                    <p className="mt-4 text-lg md:text-xl text-gray-300 mb-10 font-light max-w-3xl mx-auto drop-shadow-md">
+                        Place Of Service : At home Events and parties Hotel / Motel Clubs Outcall
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <Link href="/browse" className="px-6 py-3 md:px-8 md:py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-xl hover:shadow-2xl text-sm md:text-base">
@@ -92,24 +141,24 @@ export default function Home() {
                             </h2>
                             <div className="space-y-8">
                                 <div className="flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">✨</div>
+                                    <div className="flex-shrink-0 w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-2xl">💰</div>
                                     <div>
-                                        <h3 className="text-xl font-bold mb-2">Curated Elegance</h3>
-                                        <p className="text-gray-400">Our companions are chosen for their education, conversation skills, and social intelligence, moving beyond just aesthetics.</p>
+                                        <h3 className="text-xl font-bold mb-2">No commissions or fees</h3>
+                                        <p className="text-gray-400">The companion keeps 100% of what she charges. No booking fees or commissions are charged by VelvetDate. Real-time online searches available to contact immediately and request to meet (Hottest Escort).</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">🛡️</div>
+                                    <div className="flex-shrink-0 w-12 h-12 bg-pink-600/20 rounded-xl flex items-center justify-center text-2xl">�</div>
                                     <div>
-                                        <h3 className="text-xl font-bold mb-2">Total Confidentiality</h3>
-                                        <p className="text-gray-400">Your privacy is our highest priority. We use secure booking systems and maintain 100% discretion for all meetings.</p>
+                                        <h3 className="text-xl font-bold mb-2">Live chat system & Notifications</h3>
+                                        <p className="text-gray-400">VelvetDate gives premium clients the ability to message the companion directly. Premium clients can search offline escorts and set alerts, notifying when an escort is next available to contact (VIP SEXY MODELS).</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center text-2xl">🏙️</div>
+                                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center text-2xl">✅</div>
                                     <div>
-                                        <h3 className="text-xl font-bold mb-2">Local Expertise</h3>
-                                        <p className="text-gray-400">Our companions know the finest corners of Kolkata, from the hidden cafes of North Kolkata to the gala events in New Town.</p>
+                                        <h3 className="text-xl font-bold mb-2">Verified reviews & Verification</h3>
+                                        <p className="text-gray-400">Trusted reviews, written by real clients who can be trusted. All reviews are 100% verified. Companions can have their age and photos verified by VelvetDate's 24/7 support staff. Verified profiles are highlighted.</p>
                                     </div>
                                 </div>
                             </div>
@@ -117,8 +166,8 @@ export default function Home() {
                         <div className="relative">
                             <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-2xl opacity-20"></div>
                             <img
-                                src="https://images.unsplash.com/photo-1549490349-8643362247b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                alt="Elegant Setting"
+                                src="https://lic.me/image/jessietaylor.jpg"
+                                alt="Kolkata VIP Escort Service - Elegant Setting for Meeting Call Girls"
                                 className="relative rounded-2xl shadow-2xl z-10 w-full object-cover h-[500px]"
                             />
                         </div>
@@ -131,26 +180,26 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Simple & <span className="text-pink-500">Secure</span></h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">Our 3-step process is designed to ensure safety and satisfaction for every engagement.</p>
+                        <p className="text-gray-400 max-w-4xl mx-auto">Our Website is designed as for user friendly and anyone can book easily VIP ESCORT and Hot Models and Hottest call girls. We ensure about 100% safety, 100% confidentiality, 100% sex satisfaction and Pleasure</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                         <FeatureStep
-                            title="1. Browse & Filter"
-                            desc="Search through verified profiles based on location (Park Street, Salt Lake, New Town...), interests, and personality."
+                            title="Real-time online searches"
+                            desc="VIP ESCORTS and sexy Call girls are available to contact immediately and request to meet. Clients can safely and discreetly request a date with an escort. Privacy and trust is a top priority for VelvetDate."
                             icon="🔍"
                             color="purple"
                         />
                         <FeatureStep
-                            title="2. Book a Date"
-                            desc="Send a request with your date details. We handle scheduling and secure the professional engagement."
-                            icon="📅"
+                            title="100% Real"
+                            desc="All ratings and reviews are posted unedited for other clients to read, giving valuable and insightful feedback to the community and fully satisfied things are totally true."
+                            icon="�"
                             color="pink"
                         />
                         <FeatureStep
-                            title="3. Enjoy Your Time"
-                            desc="Meet your companion and enjoy a stress-free, engaging time. Strictly platonic and high-standard."
-                            icon="✨"
+                            title="100% Private"
+                            desc="Once a request is complete, clients can leave a rating and written review of their escort experience. All feedback remains totally anonymous. We provide one of the best sex services in Kolkata. Our one of the hottest Call girls and hot VIP ESCORTS are renowned Models and they belong from Elite Culture also."
+                            icon="🔒"
                             color="blue"
                         />
                     </div>
@@ -164,29 +213,29 @@ export default function Home() {
                     <div className="flex flex-col lg:flex-row items-center gap-16">
                         <div className="lg:w-1/2 order-2 lg:order-1 animate-fade-in-up">
                             <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
-                                Client-Oriented <br />
-                                <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500 font-sans tracking-tight">Relaxation & Pleasure</span>
+                                Relaxation & <br />
+                                <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500 font-sans tracking-tight">Pleasure</span>
                             </h2>
                             <p className="text-xl text-gray-300 mb-10 font-light leading-relaxed max-w-xl">
-                                Our service is strictly engineered around your well-being. Whether you seek a quiet escape from organizational stress or a day dedicated to pure aesthetic pleasure, we provide the ultimate companionship for your relaxation.
+                                100% Private. Once a request is complete, clients can leave a rating and written review of their escort experience. All feedback remains totally anonymous.
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                                 <div className="p-6 glass rounded-2xl border border-white/10 hover:border-pink-500/30 transition-colors">
-                                    <div className="text-3xl mb-3">🧘‍♂️</div>
-                                    <h3 className="text-lg font-bold mb-2 text-white">Curated Peace</h3>
-                                    <p className="text-sm text-gray-400 italic">Experience silence and presence with a companion who understands the value of peace.</p>
+                                    <div className="text-3xl mb-3">💯</div>
+                                    <h3 className="text-lg font-bold mb-2 text-white">100% Real</h3>
+                                    <p className="text-sm text-gray-400 italic">All ratings and reviews are posted unedited for other clients to read, giving valuable and insightful feedback to the community. Whatever you see You get the same Horney beauty.</p>
                                 </div>
                                 <div className="p-6 glass rounded-2xl border border-white/10 hover:border-purple-500/30 transition-colors">
-                                    <div className="text-3xl mb-3">🎨</div>
-                                    <h3 className="text-lg font-bold mb-2 text-white">Leisure Oriented</h3>
-                                    <p className="text-sm text-gray-400 italic">From art galleries to premium lounges, enjoy time focused entirely on your satisfaction.</p>
+                                    <div className="text-3xl mb-3">✅</div>
+                                    <h3 className="text-lg font-bold mb-2 text-white">100% Verified</h3>
+                                    <p className="text-sm text-gray-400 italic">Unique algorithms based on requests pattern checks help us determine which ratings and reviews are genuine, and remove fake and suspicious feedback.</p>
                                 </div>
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link href="/browse" className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-bold text-center hover:shadow-[0_0_30px_-5px_rgba(219,39,119,0.5)] transition-all transform hover:scale-105">
-                                    Experience Pure Luxury
+                                    Experience Pure Pleasure
                                 </Link>
                             </div>
                         </div>
@@ -195,8 +244,8 @@ export default function Home() {
                             <div className="absolute -inset-6 bg-gradient-to-tr from-purple-600/20 to-pink-600/20 rounded-3xl blur-3xl opacity-50"></div>
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1544161515-4ae6ce6ca676?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
-                                    alt="Relaxation and Pleasure"
+                                    src="https://ic-vt-nss.xhcdn.com/a/ZGIxYjQ1MmE1ZGE5MTRhMWE5NmQxNTUyMGI0MDUxNTE/s(w:2560,h:1440),webp/026/403/885/v2/2560x1440.205.webp"
+                                    alt="Premium Escorts and Real Models for Relaxation and Pleasure in Kolkata"
                                     className="w-full h-[600px] object-cover transition-transform duration-1000 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
@@ -225,9 +274,9 @@ export default function Home() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
-                            { name: 'Amit R.', text: 'Absolutely professional and engaging. My companion for the corporate gala at ITC Sonar was the highlight of the evening.', rating: 5 },
-                            { name: 'Sameer K.', text: 'Discretion was my biggest concern, but VelvetDate handled everything perfectly. Highly recommended for meaningful conversation.', rating: 5 },
-                            { name: 'Vikram S.', text: 'Kolkata has many options, but the standard of companions here is truly elite. A refined experience from start to finish.', rating: 5 }
+                            { name: 'Happy Client', text: 'It\'s a wonderful night at ITC Royal Bengal, she is too satisfying, she give me wonderful blowjob Anal sex…tottaly friendly and genuine, she is a college girl, her age is near about 21 she is model…', rating: 5 },
+                            { name: 'Satisfied Client', text: 'he is polite, homely and very sweet, cute in nature yet horny..No hurry in service and absolutely a pure soul..Purely gfe.. She is too horney…She is the best bong girl I ever met… perfect girl in bed… knows how to please a man… moreover she is the BJ Queen 👸🏼 👸🏼 👸🏼 … as mentioned in chat CIM her specialty and that’s true… real BJ Queen… 10 out of 10…', rating: 5 },
+                            { name: 'Trusting Client', text: 'She’s one of the few genuine girls out there who actually provides value for your money. Extremely cooperative and straightforward. If you\'re tired of all the scammers and fake profiles, this is the real deal—no bluffing. Take my word for it and give her a try', rating: 5 }
                         ].map((t, i) => (
                             <div key={i} className="glass p-8 rounded-2xl border-t-2 border-pink-500/20">
                                 <div className="text-yellow-400 mb-4">{'★'.repeat(t.rating)}</div>
@@ -245,9 +294,10 @@ export default function Home() {
                     <h2 className="text-3xl md:text-5xl font-serif font-bold mb-12 text-center underline decoration-pink-500 underline-offset-8">Common Questions</h2>
                     <div className="space-y-6">
                         {[
-                            { q: 'Is this service strictly platonic?', a: 'Yes. VelvetDate provides professional, platonic companionship for social, cultural, and business events.' },
-                            { q: 'How do I ensure a booking?', a: 'Once you select a profile, fill in your date details. Our team verifies the availability and confirms within 2-4 hours.' },
-                            { q: 'Are the profiles verified?', a: 'Every companion on our platform undergoes a rigorous screening process to ensure authenticity and professionalism.' }
+                            { q: 'How do I book an appointment?', a: 'You have to choose the models…whatever you see , you get the same beauty girl.' },
+                            { q: 'Are the profiles verified?', a: '100% verified models and we provide also spa service, full body massages include private parts….you have to do choose and book the girls after that honrey beauty is your in your preferable location, Hotels , near about kolkata.' },
+                            { q: 'What are the booking hours?', a: 'Many services claim to operate 24/7, with specific hours often listed (e.g., 11 AM to 3 AM daily).' },
+                            { q: 'Are they over 18?', a: 'Websites usually explicitly state that they are for adults 18+ only and that they do not promote illegal activities or underage services.' }
                         ].map((item, id) => (
                             <div key={id} className="glass p-6 rounded-xl border border-white/5">
                                 <h4 className="font-bold text-lg mb-2 text-pink-400">Q: {item.q}</h4>
@@ -255,6 +305,22 @@ export default function Home() {
                             </div>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* SEO Content Block - Hidden visually but present for crawlers or kept low profile */}
+            <section className="py-12 bg-black text-gray-800 text-xs leading-relaxed">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="text-gray-700 font-bold mb-4 uppercase tracking-widest">Best Sex Service & Call Girls in Kolkata</h2>
+                    <p className="mb-4">
+                        VelvetDate offers the most satisfying **Sex Service in Kolkata**. Our agency provides top-class **Kolkata Call Girls** and **VIP Escort Services** for your ultimate pleasure. If you are looking for a **Hot Call Girl**, **Sexy Escort**, or **Independent Model** for **Full Night Sex** or **Real Love Making**, you are at the right place. We cover all locations like **Park Street**, **Salt Lake**, **New Town**, and **Airport Area**.
+                    </p>
+                    <p className="mb-4">
+                        Our **Escort Service** includes verified **College Girls**, **Bhabhi Call Girls**, **Housewife Escorts**, and **Russian Models**. We are known for providing the **Best Call Girl Service** in the city with 100% privacy. Whether you want **Oral Sex**, **GFE (Girlfriend Experience)**, or a **Romantic Date**, our **Sexy Call Girls** are ready to serve you 24/7 at your Hotel or Home.
+                    </p>
+                    <p>
+                        Book now for **Premium Sex Pleasure** with the hottest **Escorts in Kolkata**. We are the most trusted agency for **Safe and Discreet Sex Services** near you.
+                    </p>
                 </div>
             </section>
         </main>
