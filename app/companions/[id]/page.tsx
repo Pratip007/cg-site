@@ -3,11 +3,42 @@
 import { useParams } from 'next/navigation';
 import { useCompanions } from '../../../hooks/useCompanions';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function CompanionProfile() {
     const params = useParams();
     const { getCompanion } = useCompanions();
     const companion = getCompanion(params.id as string);
+
+    const [bookingDate, setBookingDate] = useState('');
+    const [startTime, setStartTime] = useState('');
+    const [duration, setDuration] = useState('2 Hours');
+    const [meetingPlace, setMeetingPlace] = useState('');
+
+    const handleBookingRequest = () => {
+        if (!bookingDate || !startTime || !meetingPlace) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        const formattedDate = bookingDate.split('-').reverse().join('-');
+
+        const message = `Booking Request for ${companion?.name || 'Companion'}
+        
+Date: ${formattedDate}
+Start Time: ${startTime}
+Duration: ${duration}
+Meeting Place: ${meetingPlace}`;
+
+        const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+        if (whatsappNumber) {
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        } else {
+            console.error('WhatsApp number not configured');
+            alert('WhatsApp number not configured in environment variables');
+        }
+    };
 
     if (!companion) {
         return (
@@ -21,10 +52,10 @@ export default function CompanionProfile() {
     }
 
     return (
-        <div className="pt-28 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen bg-slate-900 text-white">
+        <div className="pt-4 md:pt-14 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen bg-slate-900 text-white">
 
             {/* Breadcrumb */}
-            <nav className="flex mb-8 text-gray-400 text-sm">
+            <nav className="flex mb-2 text-gray-400 text-sm">
                 <Link href="/" className="hover:text-white">Home</Link>
                 <span className="mx-2">/</span>
                 <Link href="/browse" className="hover:text-white">Browse</Link>
@@ -99,7 +130,7 @@ export default function CompanionProfile() {
                             <svg className="w-5 h-5 text-pink-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            Interests & Hobbies
+                            Services
                         </h3>
                         <div className="flex flex-wrap gap-2">
                             {companion.interests.map((interest, i) => (
@@ -137,6 +168,8 @@ export default function CompanionProfile() {
                                 <label className="block text-sm font-medium text-gray-400 mb-2">Date</label>
                                 <input
                                     type="date"
+                                    value={bookingDate}
+                                    onChange={(e) => setBookingDate(e.target.value)}
                                     className="w-full bg-slate-800 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-purple-500"
                                 />
                             </div>
@@ -146,16 +179,22 @@ export default function CompanionProfile() {
                                     <label className="block text-sm font-medium text-gray-400 mb-2">Start Time</label>
                                     <input
                                         type="time"
+                                        value={startTime}
+                                        onChange={(e) => setStartTime(e.target.value)}
                                         className="w-full bg-slate-800 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-purple-500"
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-400 mb-2">Duration</label>
-                                    <select className="w-full bg-slate-800 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-purple-500">
-                                        <option>2 Hours</option>
-                                        <option>3 Hours</option>
-                                        <option>4 Hours</option>
-                                        <option>5+ Hours</option>
+                                    <select
+                                        value={duration}
+                                        onChange={(e) => setDuration(e.target.value)}
+                                        className="w-full bg-slate-800 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-purple-500"
+                                    >
+                                        <option value="2 Hours">2 Hours</option>
+                                        <option value="3 Hours">3 Hours</option>
+                                        <option value="4 Hours">4 Hours</option>
+                                        <option value="5+ Hours">5+ Hours</option>
                                     </select>
                                 </div>
                             </div>
@@ -164,6 +203,8 @@ export default function CompanionProfile() {
                                 <label className="block text-sm font-medium text-gray-400 mb-2">Meeting Place</label>
                                 <input
                                     type="text"
+                                    value={meetingPlace}
+                                    onChange={(e) => setMeetingPlace(e.target.value)}
                                     placeholder="e.g. Cafe Coffee Day, MG Road"
                                     className="w-full bg-slate-800 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-purple-500"
                                 />
@@ -171,8 +212,8 @@ export default function CompanionProfile() {
 
                             <div className="bg-purple-900/20 p-4 rounded-lg border border-purple-500/20">
                                 <div className="flex justify-between mb-2 text-sm">
-                                    <span className="text-gray-400">Rate (2 hrs)</span>
-                                    <span>₹{companion.price * 2}</span>
+                                    <span className="text-gray-400">Rate ({(parseInt(duration) || 2)} hrs)</span>
+                                    <span>₹{companion.price * (parseInt(duration) || 2)}</span>
                                 </div>
                                 <div className="flex justify-between mb-2 text-sm">
                                     <span className="text-gray-400">Service Fee</span>
@@ -180,12 +221,13 @@ export default function CompanionProfile() {
                                 </div>
                                 <div className="flex justify-between font-bold text-lg pt-2 border-t border-purple-500/20 mt-2">
                                     <span>Total</span>
-                                    <span className="text-pink-400">₹{companion.price * 2 + Math.round(companion.price * 0.15)}</span>
+                                    <span className="text-pink-400">₹{companion.price * (parseInt(duration) || 2) + Math.round(companion.price * 0.15)}</span>
                                 </div>
                             </div>
 
                             <button
                                 type="button"
+                                onClick={handleBookingRequest}
                                 disabled={!companion.isAvailable}
                                 className="w-full py-3.5 md:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-purple-500/40 transition transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed text-white"
                             >
