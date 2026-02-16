@@ -170,6 +170,7 @@ export default function Home() {
                                 src="https://lic.me/image/jessietaylor.jpg"
                                 alt="Kolkata VIP Escort Service - Elegant Setting for Meeting Call Girls"
                                 className="relative rounded-2xl shadow-2xl z-10 w-full object-cover h-[500px]"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -248,6 +249,7 @@ export default function Home() {
                                     src="https://ic-vt-nss.xhcdn.com/a/ZGIxYjQ1MmE1ZGE5MTRhMWE5NmQxNTUyMGI0MDUxNTE/s(w:2560,h:1440),webp/026/403/885/v2/2560x1440.205.webp"
                                     alt="Premium Escorts and Real Models for Relaxation and Pleasure in Kolkata"
                                     className="w-full h-[600px] object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
                                 <div className="absolute bottom-10 left-10 right-10 p-8 glass backdrop-blur-lg rounded-2xl border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -345,7 +347,7 @@ function FeaturedCard({ id, name, age, location, price, image, desc, interests =
     return (
         <div className="group relative rounded-2xl overflow-hidden shadow-2xl transition transform hover:-translate-y-2 cursor-pointer bg-slate-800 border border-slate-700 hover:border-pink-500/50">
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10 transition opacity-90 group-hover:opacity-60"></div>
-            <img src={image} alt={name} className="w-full h-[500px] object-cover transition duration-700 group-hover:scale-110" />
+            <img src={image} alt={name} className="w-full h-[500px] object-cover transition duration-700 group-hover:scale-110" loading="lazy" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-2 group-hover:translate-y-0 transition transform duration-300">
                 <div className="flex justify-between items-start mb-3">
                     <div className="flex-1">

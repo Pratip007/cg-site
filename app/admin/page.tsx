@@ -209,7 +209,7 @@ export default function AdminPanel() {
                                 <div className="mt-2 flex flex-wrap gap-2">
                                     {formData.images.split('\n').filter(i => i.trim() && i.startsWith('http')).slice(0, 5).map((url, idx) => (
                                         <div key={idx} className="relative w-12 h-12 rounded border border-gray-700 overflow-hidden">
-                                            <img src={url.trim()} alt="Preview" className="w-full h-full object-cover" />
+                                            <img src={url.trim()} alt="Preview" className="w-full h-full object-cover" loading="lazy" />
                                         </div>
                                     ))}
                                     {formData.images.split('\n').filter(i => i.trim()).length > 5 && (
@@ -280,6 +280,7 @@ export default function AdminPanel() {
                                                     src={companion.images[0] || 'https://via.placeholder.com/100'}
                                                     alt={companion.name}
                                                     className="w-16 h-16 rounded-lg object-cover"
+                                                    loading="lazy"
                                                 />
                                             </td>
                                             <td className="py-4">

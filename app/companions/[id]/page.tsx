@@ -44,8 +44,8 @@ Meeting Place: ${meetingPlace}`;
         return (
             <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center pt-20">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold mb-4">Profile Not Found</h1>
-                    <Link href="/browse" className="text-pink-400 hover:text-pink-300 underline">← Back to Browse</Link>
+                    <h1 className="text-4xl font-bold mb-4">Profile Loading...</h1>
+
                 </div>
             </div>
         );
@@ -73,6 +73,7 @@ Meeting Place: ${meetingPlace}`;
                             src={companion.images[0] || 'https://via.placeholder.com/1200x600?text=No+Image'}
                             alt={companion.name}
                             className="w-full h-[400px] md:h-[600px] object-cover"
+                            loading="lazy"
                         />
                         <div className="absolute bottom-4 left-4 flex gap-2">
                             <span className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-bold border border-white/20">
@@ -90,6 +91,7 @@ Meeting Place: ${meetingPlace}`;
                                     src={img}
                                     className="rounded-xl h-24 w-full object-cover cursor-pointer hover:opacity-80 transition border-2 border-transparent hover:border-pink-500"
                                     alt={`${companion.name} ${idx + 1}`}
+                                    loading="lazy"
                                 />
                             ))}
                         </div>

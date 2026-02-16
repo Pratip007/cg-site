@@ -99,6 +99,7 @@ function CompanionCard({ companion }: { companion: Companion }) {
                     src={companion.images[0] || 'https://via.placeholder.com/400x300?text=No+Image'}
                     alt={companion.name}
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                    loading="lazy"
                 />
                 <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white flex items-center">
                     <span className={`w-2 h-2 rounded-full mr-1.5 ${companion.isAvailable ? 'bg-green-500' : 'bg-red-500'}`}></span>
