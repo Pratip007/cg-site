@@ -21,7 +21,7 @@ export default function Navbar() {
                         <div className="ml-10 flex items-baseline space-x-8">
                             <Link href="/" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Home</Link>
                             <Link href="/browse" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Browse Profiles</Link>
-                            <Link href="/admin" className="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition border border-yellow-500/30">Admin Panel</Link>
+
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@ export default function Navbar() {
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <Link href="/" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
                         <Link href="/browse" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Browse Profiles</Link>
-                        <Link href="/admin" onClick={() => setIsOpen(false)} className="text-yellow-500 hover:text-yellow-400 block px-3 py-2 rounded-md text-base font-medium">Admin Panel</Link>
+
                     </div>
                 </div>
             )}
