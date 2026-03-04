@@ -1,6 +1,5 @@
 export interface Companion {
     id: string;
-    _id?: string;
     name: string;
     age: number;
     location: string;
@@ -10,8 +9,6 @@ export interface Companion {
     images: string[];
     isAvailable: boolean;
     reviews?: Review[];
-    createdAt?: string;
-    updatedAt?: string;
 }
 
 export interface Review {

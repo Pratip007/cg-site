@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongodb';
-import Companion from '@/models/Companion';
+import { db } from '@/lib/db';
 
 export async function GET(
     request: Request,
     context: { params: Promise<{ id: string }> }
 ) {
     try {
-        await dbConnect();
         const { id } = await context.params;
-        const companion = await Companion.findById(id);
+        const companion = await db.companions.findById(id);
 
         if (!companion) {
             return NextResponse.json({ error: 'Companion not found' }, { status: 404 });
@@ -26,13 +24,9 @@ export async function PUT(
     context: { params: Promise<{ id: string }> }
 ) {
     try {
-        await dbConnect();
         const { id } = await context.params;
         const body = await request.json();
-        const companion = await Companion.findByIdAndUpdate(id, body, {
-            new: true,
-            runValidators: true,
-        });
+        const companion = await db.companions.findByIdAndUpdate(id, body);
 
         if (!companion) {
             return NextResponse.json({ error: 'Companion not found' }, { status: 404 });
@@ -49,9 +43,8 @@ export async function DELETE(
     context: { params: Promise<{ id: string }> }
 ) {
     try {
-        await dbConnect();
         const { id } = await context.params;
-        const companion = await Companion.findByIdAndDelete(id);
+        const companion = await db.companions.findByIdAndDelete(id);
 
         if (!companion) {
             return NextResponse.json({ error: 'Companion not found' }, { status: 404 });

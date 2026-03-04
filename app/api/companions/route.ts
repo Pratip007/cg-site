@@ -1,15 +1,9 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongodb';
-import Companion from '@/models/Companion';
+import { db } from '@/lib/db';
 
 export async function GET() {
     try {
-        await dbConnect();
-
-
-
-
-        const companions = await Companion.find({}).sort({ createdAt: -1 });
+        const companions = await db.companions.find();
         return NextResponse.json(companions);
     } catch (error: any) {
         console.error('Error in GET /api/companions:', error);
@@ -19,9 +13,8 @@ export async function GET() {
 
 export async function POST(request: Request) {
     try {
-        await dbConnect();
         const body = await request.json();
-        const companion = await Companion.create(body);
+        const companion = await db.companions.create(body);
         return NextResponse.json(companion, { status: 201 });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 400 });

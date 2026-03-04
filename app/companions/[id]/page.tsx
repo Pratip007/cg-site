@@ -14,6 +14,7 @@ export default function CompanionProfile() {
     const [startTime, setStartTime] = useState('');
     const [duration, setDuration] = useState('2 Hours');
     const [meetingPlace, setMeetingPlace] = useState('');
+    const [activeImage, setActiveImage] = useState<string | null>(null);
 
     const handleBookingRequest = () => {
         if (!bookingDate || !startTime || !meetingPlace) {
@@ -68,11 +69,11 @@ Meeting Place: ${meetingPlace}`;
                 {/* Left Column: Photos & About */}
                 <div className="lg:col-span-2 space-y-8">
                     {/* Main Photo */}
-                    <div className="rounded-2xl overflow-hidden shadow-2xl relative group">
+                    <div className="rounded-2xl overflow-hidden shadow-2xl relative group h-[400px] md:h-[600px] bg-slate-800">
                         <img
-                            src={companion.images[0] || 'https://via.placeholder.com/1200x600?text=No+Image'}
+                            src={activeImage || companion.images[0] || 'https://via.placeholder.com/1200x600?text=No+Image'}
                             alt={companion.name}
-                            className="w-full h-[400px] md:h-[600px] object-cover"
+                            className="w-full h-full object-cover transition-all duration-500"
                             loading="lazy"
                         />
                         <div className="absolute bottom-4 left-4 flex gap-2">
@@ -84,15 +85,23 @@ Meeting Place: ${meetingPlace}`;
 
                     {/* Gallery Grid */}
                     {companion.images.length > 1 && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {companion.images.slice(1, 5).map((img, idx) => (
-                                <img
+                        <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
+                            {companion.images.map((img, idx) => (
+                                <div
                                     key={idx}
-                                    src={img}
-                                    className="rounded-xl h-24 w-full object-cover cursor-pointer hover:opacity-80 transition border-2 border-transparent hover:border-pink-500"
-                                    alt={`${companion.name} ${idx + 1}`}
-                                    loading="lazy"
-                                />
+                                    onClick={() => setActiveImage(img)}
+                                    className={`relative rounded-xl overflow-hidden cursor-pointer transition transform hover:scale-105 ${(activeImage === img || (!activeImage && idx === 0))
+                                            ? 'ring-2 ring-pink-500 scale-105'
+                                            : 'opacity-70 hover:opacity-100'
+                                        }`}
+                                >
+                                    <img
+                                        src={img}
+                                        className="h-20 w-full object-cover"
+                                        alt={`${companion.name} thumbnail ${idx + 1}`}
+                                        loading="lazy"
+                                    />
+                                </div>
                             ))}
                         </div>
                     )}
